@@ -21,7 +21,7 @@ class simulate_get_check_cdn_thread(threading.Thread):
 			self.queue.task_done()
 		
 	def simulate_get_check_cdn(self, domain_name):
-		print("Start: ", domain_name)
+		#print("Start: ", domain_name)
 		URL = "http://www.whatsmycdn.com/?uri="+domain_name+"&location=GL"
 		r = requests.get(url = URL)
 		html_response = r.text
@@ -35,7 +35,7 @@ class simulate_get_check_cdn_thread(threading.Thread):
 					is_cdn = True
 					break
 		if(is_cdn):
-			print(domain_name)
+			print domain_name,
 
 def check_domains(queue, numthreads = 40):
 	for i in range(numthreads):
